@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spears Pickles | Good Pickles, Good Times</title>
+  <meta name="description" content="Spears Pickles. Cold-packed, crunchy, garlicky pickles. Pound for pound, the world's best.">
+  <link rel="icon" href="images/lounging-pickle.webp">
+  <meta property="og:title" content="Spears Pickles">
+  <meta property="og:description" content="Good pickles, good times.">
+  <meta property="og:image" content="images/porch-pickles.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fraunces:opsz,wght,SOFT@9..144,500,100;9..144,700,100&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Karla:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f8f4ea;
+      --card: #fffdf7;
+      --red: #b8252b;
+      --green: #3d7a2a;
+      --green-dark: #24501a;
+      --ink: #2b2723;
+      --muted: #5f5850;
+      --rule: #2b2723;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6;
+      background-color: var(--paper);
+      /* faint paper grain */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-variation-settings: "SOFT" 100; line-height: 1.12; margin: 0; }
+    .label { font-family: "Karla", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+
+    /* Trader Joe's-style section heading: title sitting on a double rule */
+    .rule-head { display: flex; align-items: flex-end; gap: 14px; border-bottom: 4px double var(--rule); padding-bottom: 6px; margin-bottom: 28px; }
+    .rule-head h2 { font-family: "Karla", sans-serif; font-size: 15px; letter-spacing: .02em; font-weight: 700; }
+    .rule-head .doodle { width: 34px; margin-left: auto; margin-bottom: -2px; }
+
+    .btn {
+      display: inline-block; text-decoration: none;
+      font-family: "Karla", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--red); background: var(--card);
+      padding: 11px 22px; border: 1.5px solid var(--red);
+      box-shadow: 4px 4px 0 -1.5px var(--card), 4px 4px 0 0 var(--red);
+      transition: transform .12s, box-shadow .12s;
+    }
+    .btn:hover { transform: translate(2px, 2px); box-shadow: 0 0 0 0 var(--card), 0 0 0 0 var(--red); }
+    .btn.solid { background: var(--red); color: #fff; }
+
+    /* ---------- Top bar + header ---------- */
+    .topbar { background: var(--card); border-bottom: 1px solid #e3dccd; font-family: "Karla", sans-serif; font-size: 13px; }
+    .topbar .wrap { display: flex; justify-content: flex-end; gap: 28px; padding-top: 7px; padding-bottom: 7px; }
+    .topbar a { text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    header { background: var(--card); border-bottom: 1px solid #e3dccd; position: sticky; top: 0; z-index: 10; }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 88px; }
+    nav { display: flex; gap: 30px; }
+    nav a { font-family: "Karla", sans-serif; font-weight: 700; font-size: 15px; text-decoration: none; }
+    nav a:hover { color: var(--red); }
+    @media (max-width: 700px) {
+      header nav a:not(.btn) { display: none; } .topbar { display: none; }
+      header .wrap { height: 72px; }
+      header .logo .word { font-size: 26px; } header .logo img { width: 44px; }
+      header .btn { padding: 9px 12px; font-size: 11px; white-space: nowrap; }
+    }
+
+    /* Grillo's-style logo: chunky stacked slab caps + the mascot */
+    .logo { display: flex; align-items: center; gap: 4px; text-decoration: none; }
+    .logo .word {
+      font-family: "Alfa Slab One", serif; color: var(--green); line-height: .86;
+      font-size: 36px; letter-spacing: .01em; text-transform: uppercase;
+      -webkit-text-stroke: 1px var(--green-dark);
+      filter: url(#rough);
+    }
+    .logo .word span { display: block; }
+    .logo img { width: 64px; margin-top: -6px; transform: rotate(-4deg); }
+
+    /* ---------- Hero: photo with a paper card on top ---------- */
+    .hero { position: relative; }
+    .hero-photo { width: 100%; height: min(78vh, 700px); object-fit: cover; object-position: 50% 12%; }
+    .hero-card {
+      position: relative; max-width: 700px; margin: -120px auto 0; text-align: center;
+      background: var(--card); border: 6px solid #fff; outline: 1px solid #d8cfbd;
+      box-shadow: 0 10px 30px rgba(43, 39, 35, .18); padding: 34px 36px 38px;
+    }
+    .hero-card h1 { font-size: clamp(32px, 4.4vw, 46px); margin-bottom: 12px; }
+    .hero-card p { margin: 0 0 24px; color: var(--muted); }
+    @media (max-width: 700px) {
+      .hero-photo { height: 58vh; }
+      .hero-card { margin: -70px 16px 0; padding: 26px 22px 30px; }
+    }
+
+    /* ---------- Main + sidebar, like TJ's homepage ---------- */
+    .layout { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; padding-top: 72px; padding-bottom: 88px; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+    section { scroll-margin-top: 100px; }
+
+    /* Flyer items */
+    .item { margin-bottom: 56px; }
+    .item .frame { border: 1px solid var(--rule); padding: 6px; background: var(--card); }
+    .item h3 { font-size: clamp(28px, 3.4vw, 36px); margin: 20px 0 10px; }
+    .item p { margin: 0 0 14px; }
+    .item .kicker { color: var(--red); margin-bottom: 4px; }
+
+    .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    @media (max-width: 600px) { .mini-grid { grid-template-columns: 1fr; } }
+    .mini { background: var(--card); border: 1px solid #d8cfbd; padding: 22px 22px 26px; }
+    .mini h3 { font-size: 24px; margin: 6px 0 8px; }
+    .mini p { margin: 0; font-size: 16px; color: var(--muted); }
+    .mini .kicker { color: var(--red); }
+    .mini .note { display: block; margin-top: 14px; font-style: italic; font-size: 15px; color: var(--ink); }
+
+    /* Sidebar */
+    aside .box { background: var(--card); border: 1px solid #d8cfbd; padding: 24px; margin-bottom: 36px; }
+    aside .box h3 { font-size: 24px; margin-bottom: 10px; }
+    aside .box p { font-size: 16px; color: var(--muted); margin: 0 0 16px; }
+    aside .box img { margin: 4px auto 16px; }
+    .sign { text-align: center; }
+    .sign .big { font-family: "Alfa Slab One", serif; color: var(--green); font-size: 30px; line-height: 1; text-transform: uppercase; filter: url(#rough); margin: 4px 0 12px; }
+    .sign .big em { font-style: normal; color: var(--red); }
+    .facts { list-style: none; padding: 0; margin: 0; font-size: 16px; }
+    .facts li { padding: 10px 0; border-top: 1px dashed #c9bfab; }
+    .facts li:first-child { border-top: 0; padding-top: 0; }
+    .facts b { font-family: "Karla", sans-serif; }
+
+    /* Where to buy */
+    .buy { text-align: center; padding: 64px 0 80px; border-top: 4px double var(--rule); }
+    .buy h2 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 10px; }
+    .buy p { max-width: 34em; margin: 0 auto 26px; color: var(--muted); }
+
+    /* Footer */
+    footer { background: var(--green-dark); color: #efe9da; padding: 40px 0; font-family: "Karla", sans-serif; font-size: 14px; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    footer .logo .word { color: #efe9da; -webkit-text-stroke: 0; font-size: 24px; }
+    footer .logo img { display: none; }
+    footer nav a { font-size: 14px; }
+    footer nav a:hover { color: #fff; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- slight wobble on the logo lettering so it reads hand-painted -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+  </svg>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a href="#buy">Where to Buy</a>
+      <a href="#story">About Us</a>
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="Spears Pickles home">
+        <span class="word"><span>Spears</span><span>Pickles</span></span>
+        <img src="images/lounging-pickle.webp" alt="" width="1166" height="1349">
+      </a>
+      <nav>
+        <a href="#pickles">Our Pickles</a>
+        <a href="#story">Our Story</a>
+        <a class="btn solid" href="#buy">Where to Buy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <img class="hero-photo" src="images/porch-pickles.webp" alt="Two pickle characters on a porch: one in a straw hat lounging in an Adirondack chair, one in a tennis skirt and headband, under a sign reading Good Pickles Good Times" width="1312" height="1199">
+      <div class="hero-card">
+        <h1>Good Pickles, Good Times.</h1>
+        <p>Cold-packed, crunchy and a little heavy on the garlic. Pull up a chair, you're gonna be here a while.</p>
+        <a class="btn" href="#pickles">Meet the Pickles</a>
+      </div>
+    </div>
+
+    <div class="wrap layout">
+      <section id="pickles">
+        <div class="rule-head">
+          <h2>What's in the Jar?</h2>
+          <svg class="doodle" viewBox="0 0 40 40" aria-hidden="true"><path d="M13 36c-4-6-3-20 2-27 4-5 11-5 13 1 3 8 1 20-4 26-3 3-9 3-11 0z" fill="#3d7a2a" stroke="#2b2723" stroke-width="1.6"/><g fill="#24501a"><circle cx="18" cy="14" r="1.3"/><circle cx="22" cy="20" r="1.3"/><circle cx="17" cy="25" r="1.3"/><circle cx="21" cy="30" r="1.3"/></g></svg>
+        </div>
+
+        <article class="item">
+          <div class="frame">
+            <img src="images/boxing-pickles.webp" alt="Pickles boxing: pound for pound, world's best pickles" width="1185" height="1327" loading="lazy">
+          </div>
+          <p class="label kicker">The Heavyweight</p>
+          <h3>Classic Dill Spears</h3>
+          <p>We could tell you these spears are crunchy. Lots of pickles say that. So instead, we'll tell you that during testing, one of our tasters bit into one and the person across the table asked if they'd stepped on a twig.</p>
+          <p>Fresh cucumbers, fresh dill, a truly unreasonable amount of garlic, and a cold brine that never sees a stove. That last part matters: cooking is what makes pickles soft, so we just… don't.</p>
+          <a class="btn" href="#buy">Find a Jar</a>
+        </article>
+
+        <div class="mini-grid">
+          <article class="mini">
+            <p class="label kicker">The Lightweight</p>
+            <h3>Garlic Knockout Chips</h3>
+            <p>Crinkle-cut so there's more surface area for brine to cling to. It's science. Delicious, garlicky science. Built for burgers, sandwiches and standing in front of the fridge.</p>
+            <span class="note">Pairs well with: a grill and no plans.</span>
+          </article>
+          <article class="mini">
+            <p class="label kicker">The Southpaw</p>
+            <h3>Hot Jab Spears</h3>
+            <p>Our classic spear with a chili kick that doesn't show up right away. It waits. Then, about two chews in, it says hello.</p>
+            <span class="note">Pairs well with: a cold drink. Trust us.</span>
+          </article>
+        </div>
+      </section>
+
+      <aside id="story">
+        <div class="rule-head"><h2>About Us</h2></div>
+        <div class="box">
+          <img src="images/lounging-pickle.webp" alt="A pickle in a straw hat and sunglasses relaxing in an Adirondack chair" width="1166" height="1349" loading="lazy" style="max-width:180px">
+          <h3>Pull up a chair.</h3>
+          <p>Spears started on a back porch with one simple rule: a pickle should have some snap to it. No mushy spears. No sad, soggy chips.</p>
+          <p>We keep everything else easy. Real ingredients, packed cold, kept cold, straight to your fridge.</p>
+        </div>
+
+        <div class="box sign">
+          <p class="label">Pound for Pound</p>
+          <p class="big">World's <em>Best</em><br>Pickles</p>
+          <ul class="facts" style="text-align:left">
+            <li><b>Packed cold.</b> Never cooked, so they stay crisp.</li>
+            <li><b>Short ingredient list.</b> Cucumbers, dill, garlic, brine.</li>
+            <li><b>Keep 'em cold.</b> Find us in the refrigerated aisle.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <section class="buy" id="buy">
+      <div class="wrap">
+        <h2>Where can I find a Spear?</h2>
+        <p>Look for us in the refrigerated section, usually near the deli. Can't find us? Follow along and we'll let you know when we're coming to a store near you.</p>
+        <a class="btn solid" href="https://instagram.com/" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="Spears Pickles home"><span class="word"><span>Spears</span><span>Pickles</span></span></a>
+      <nav>
+        <a href="#pickles">Our Pickles</a>
+        <a href="#story">About Us</a>
+        <a href="#buy">Where to Buy</a>
+      </nav>
+      <span>&copy; <span id="yr">2026</span> Spears Pickles. Good pickles, good times.</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
